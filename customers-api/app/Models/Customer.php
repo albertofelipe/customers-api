@@ -29,13 +29,11 @@ class Customer extends Model
         return $value;
     }
 
-    // Aceitar postalCode e salvar como postal_code no banco
     public function setPostalCodeAttribute($value)
     {
         $this->attributes['postal_code'] = $value;
     }
 
-    // Renomear postal_code para postalCode no JSON de saída
     protected $appends = ['postalCode'];
 
     public function toArray()
