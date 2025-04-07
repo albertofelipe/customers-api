@@ -55,6 +55,6 @@ class CustomerController extends Controller
     {
         $customer->delete();
 
-        return response()->json([], 200);  
+        return response()->noContent();  
     }
 }
