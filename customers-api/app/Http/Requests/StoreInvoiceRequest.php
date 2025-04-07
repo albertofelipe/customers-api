@@ -31,4 +31,11 @@ class StoreInvoiceRequest extends FormRequest
             'billed_date' => $this->billedDate,
         ]);
     }
+
+    protected function passedValidation()
+    {
+        if ($this->has('paidDate') || $this->has('paid_date')) {
+            abort(422, 'paidDate is not allowed on creation.');
+        }
+    }
 }
