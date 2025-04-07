@@ -51,7 +51,8 @@ class InvoiceController extends Controller
 
     public function update(UpdateInvoiceRequest $request, Invoice $invoice)
     {
-        //
+        $invoice->update($request->validated());
+        return response()->json(new InvoiceResource($invoice));
     }
 
     public function destroy(Invoice $invoice)

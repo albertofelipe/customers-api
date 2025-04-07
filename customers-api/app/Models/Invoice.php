@@ -41,15 +41,27 @@ class Invoice extends Model
         $this->attributes['billed_date'] = $value;
     }
 
-    protected $appends = ['customer_id', 'billed_date'];
+    public function getPaidDateAttribute($value)
+    {
+        return $value;
+    }
+
+    public function setPaidDateAttribute($value)
+    {
+        $this->attributes['paid_date'] = $value;
+    }
+
+    protected $appends = ['customer_id', 'billed_date', 'paid_date'];
 
     public function toArray()
     {
         $array = parent::toArray();
         $array['customerId'] = $this->customer_id;
         $array['billedDate'] = $this->billed_date;
+        $array['paiddDate'] = $this->paid_date;
         unset($array['customer_id']);
         unset($array['billed_date']);
+        unset($array['paid_date']);
         return $array;
     }
 }
